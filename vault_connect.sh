@@ -1,0 +1,1 @@
+echo export VAULT_ADDR=$(cd terraform/vault_server && terraform output -raw vault_gateway_url)
