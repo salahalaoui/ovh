@@ -40,6 +40,24 @@ data "terraform_remote_state" "kubernetes" {
   }
 }
 
+data "terraform_remote_state" "vault_server" {
+  backend = "s3"
+  config = {
+    bucket   = "terraform-vault-project"
+    key      = "vault/terraform.tfstate"  # Main kubernetes stack state file
+    region   = "eu-west-par"
+    endpoint = "https://s3.eu-west-par.io.cloud.ovh.net/"
+
+    skip_credentials_validation = true
+    skip_region_validation      = true
+    skip_metadata_api_check     = true
+    force_path_style            = true
+  }
+}
+
+provider "vault" {
+  address = data.terraform_remote_state.vault_server.outputs.vault_gateway_url
+}
 # Kubernetes provider using kubeconfig from main stack
 provider "kubernetes" {
   # Alternative: Use kubeconfig content directly
