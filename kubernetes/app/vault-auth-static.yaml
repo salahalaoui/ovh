@@ -12,9 +12,9 @@ metadata:
   namespace: app
 spec:
   method: kubernetes
-  mount: demo-auth-mount
+  mount: kubernetes
   kubernetes:
-    role: role1
+    role: app
     serviceAccount: webapp
     audiences:
-      - vault
+      - https://kubernetes.default.svc.cluster.local
