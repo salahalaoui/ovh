@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: app
+  creationTimestamp: null
+  labels:
+    run: webapp
+  name: webapp
+spec:
+  serviceAccount: webapp
+  containers:
+  - image: hashicorp/vault
+    name: webapp
+    resources: {}
+  restartPolicy: Always
+status: {}
