@@ -6,7 +6,7 @@ metadata:
     version: 7.1.0
     env: dev
   name: block-buster-deployment
-  namespace: 1-demo
+  namespace: bb-app
 spec:
   replicas: 1
   selector:
