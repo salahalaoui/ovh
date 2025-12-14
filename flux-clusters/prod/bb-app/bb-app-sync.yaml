@@ -18,7 +18,7 @@ metadata:
   name: bb-app
   namespace: bb-app
 spec:
-  interval: 10m0s
+  interval: 1m
   path: ./flux-clusters/prod/bb-app
   prune: true
   sourceRef:
