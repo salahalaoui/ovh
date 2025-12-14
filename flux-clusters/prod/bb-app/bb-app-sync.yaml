@@ -21,7 +21,6 @@ spec:
   interval: 10s
   path: ./kubernetes/bb-app
   prune: true
-  targetNamespace: bb-app
   sourceRef:
     kind: GitRepository
     name: bb-app-source
