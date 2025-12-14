@@ -12,6 +12,8 @@ spec:
       sourceRef:
         kind: GitRepository
         name: bb-app-source
+  install:
+    createNamespace: true
   interval: 10s
   storageNamespace: bb-app
   targetNamespace: bb-app
