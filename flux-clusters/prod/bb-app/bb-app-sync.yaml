@@ -19,7 +19,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10s
-  path: ./flux-clusters/prod/bb-app
+  path: kubernetes/bb-app
   prune: true
   sourceRef:
     kind: GitRepository
