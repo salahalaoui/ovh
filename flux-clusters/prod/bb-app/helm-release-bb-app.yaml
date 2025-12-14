@@ -17,23 +17,4 @@ spec:
   interval: 10s
   storageNamespace: bb-app
   targetNamespace: bb-app
-  values:
-    fullnameOverride: ""
-    image:
-      pullPolicy: Always
-      repository: siddharth67/block-buster-dev:7.6.0
-      tag: ""
-    imagePullSecrets: []
-    labels:
-      app:
-        env: uat
-        name: bb-app
-        version: 7.x.x
-    nameOverride: ""
-    namespace:
-      name: demo-app
-    replicaCount: 1
-    service:
-      port: 80
-      targetPort: 80
-      type: ClusterIP
+  values: {}
