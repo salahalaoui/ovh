@@ -10,8 +10,8 @@ spec:
       chart: ./helm-charts/bb-app
       reconcileStrategy: ChartVersion
       sourceRef:
-        kind: GitRepository
-        name: bb-app-source
+        kind: HelmRepository
+        name: bb-app-helm-repo
   install:
     createNamespace: true
   interval: 10s
