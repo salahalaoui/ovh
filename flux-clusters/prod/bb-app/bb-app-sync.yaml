@@ -17,7 +17,8 @@ metadata:
   name: bb-app-helm-repo2
   namespace: flux-system
 spec:
+  type: oci
   interval: 10s
-  url: oci://ghcr.io/salahalaoui/bb-app/block-buster-helm-app
+  url: oci://ghcr.io/salahalaoui/bb-app
   secretRef:
     name: flux-system
