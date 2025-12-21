@@ -11,7 +11,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: bb-app-helm-repo2
+        name: bb-app-helm-repo
   install:
     createNamespace: true
   interval: 10s
