@@ -18,6 +18,6 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10s
-  url: ghcr.io/salahalaoui/bb-app/block-buster-helm-app:7.6.2
+  url: oci://ghcr.io/salahalaoui/bb-app/block-buster-helm-app
   secretRef:
     name: flux-system
