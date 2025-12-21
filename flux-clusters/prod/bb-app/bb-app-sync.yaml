@@ -8,3 +8,16 @@ metadata:
 spec:
   interval: 10s
   url: https://salahalaoui.github.io/bb-app-helm-charts
+
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: bb-app-helm-repo2
+  namespace: flux-system
+spec:
+  interval: 10s
+  url: ghcr.io/salahalaoui/bb-app/block-buster-helm-app:7.6.2
+  secretRef:
+    name: flux-system
