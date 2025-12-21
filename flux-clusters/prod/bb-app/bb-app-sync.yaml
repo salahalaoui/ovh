@@ -1,16 +1,4 @@
 
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: bb-app-helm-repo
-  namespace: flux-system
-spec:
-  interval: 10s
-  url: https://salahalaoui.github.io/bb-app-helm-charts
-
-
----
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
@@ -21,4 +9,4 @@ spec:
   interval: 10s
   url: oci://ghcr.io/salahalaoui/bb-app
   secretRef:
-    name: flux-system
+    name: ghcr-auth
