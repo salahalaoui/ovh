@@ -8,7 +8,8 @@ spec:
   chart:
     spec:
       chart: block-buster-helm-app
-      reconcileStrategy: ChartVersion
+      version: '7.6.2'
+      reconcileStrategy: Revision
       sourceRef:
         kind: HelmRepository
         name: bb-app-helm-repo
@@ -17,4 +18,6 @@ spec:
   interval: 10s
   storageNamespace: bb-app
   targetNamespace: bb-app
+  driftDetection:
+    mode: enabled # undo kubectl edits and other unintended changes
   values: {}
