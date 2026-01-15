@@ -7,6 +7,6 @@ metadata:
 spec:
   type: oci
   interval: 10s
-  url: oci://ghcr.io/salahalaoui/block-buster-helm-app
+  url: oci://ghcr.io/salahalaoui
   secretRef:
     name: ghcr-auth
