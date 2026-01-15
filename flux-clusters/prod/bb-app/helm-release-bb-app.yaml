@@ -1,4 +1,13 @@
 ---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: Image
+metadata:
+  name: bb-app
+  namespace: flux-system
+spec:
+  image: docker.io/alaouibs/block-buster-dev
+  interval: 10s
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
