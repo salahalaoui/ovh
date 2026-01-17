@@ -12,12 +12,13 @@ apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
   name: bb-app
-  namepsace: flux-system
+  namespace: flux-system
 spec: 
   imageRepositoryRef:
     name: bb-app
   policy:
-    semver: range: 7.8.x
+    semver: 
+      range: 7.8.x
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
