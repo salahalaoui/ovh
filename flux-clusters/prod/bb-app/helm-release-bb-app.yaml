@@ -39,7 +39,7 @@ metadata:
   name: bb-app
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 20s
   sourceRef:
     kind: GitRepository
     name: bb-app
