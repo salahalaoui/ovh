@@ -51,7 +51,7 @@ spec:
       author:
         email: fluxcdbot@users.noreply.github.com
         name: fluxcdbot
-      messageTemplate: '{{range .Changed.Images}}{{println .}}{{end}}'
+      messageTemplate: '{{ range .Changed.Files }}{{ range .Objects }}{{ range .Images }}{{ println . }}{{ end }}{{ end }}{{ end }}'
     push:
       branch: main
   update:
