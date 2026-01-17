@@ -68,4 +68,4 @@ spec:
   values:
     image:
       # This comment tells Flux to update this field with the full image name (repo:tag)
-      repository: docker.io/alaouibs/block-buster-dev:7.8.0 # {"$imagepolicy": "flux-system:bb-app:name"}
+      repository: alaouibs/block-buster-dev:7.8.0 # {"$imagepolicy": "flux-system:bb-app:name"}
