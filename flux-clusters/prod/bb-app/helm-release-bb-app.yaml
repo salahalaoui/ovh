@@ -8,19 +8,6 @@ spec:
   image: docker.io/alaouibs/block-buster-dev
   interval: 10s
 ---
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: GitRepository
-metadata:
-  name: bb-app
-  namespace: flux-system
-spec:
-  interval: 30s
-  ref:
-    branch: main
-  secretRef:
-    name: flux-system
-  url: ssh://git@github.com/salahalaoui/ovh
----
 apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
@@ -42,7 +29,7 @@ spec:
   interval: 20s
   sourceRef:
     kind: GitRepository
-    name: bb-app
+    name: flux-system
   git:
     checkout:
       ref:
