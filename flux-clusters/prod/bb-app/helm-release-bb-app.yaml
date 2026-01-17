@@ -8,6 +8,17 @@ spec:
   image: docker.io/alaouibs/block-buster-dev
   interval: 10s
 ---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: bb-app
+  namepsace: flux-system
+spec: 
+  imageRepositoryRef:
+    name: bb-app
+  policy:
+    semver: range: 7.8.x
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
