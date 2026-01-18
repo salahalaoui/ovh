@@ -29,7 +29,7 @@ spec:
           enabled: false
         ha:
           enabled: true
-          setNodeId = true
+          setNodeId: true
           config: <<-EOT
               ui = true
 
