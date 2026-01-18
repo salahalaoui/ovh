@@ -37,7 +37,9 @@ spec:
       ha:
         enabled: true
         replicas: 1
-        setNodeId: true
+        raft:
+          enabled: true
+          setNodeId: true
         config: <<-EOT
             ui = true
 
