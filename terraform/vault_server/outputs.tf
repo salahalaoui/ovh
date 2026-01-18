@@ -9,31 +9,7 @@ output "vault_namespace" {
   description = "Vault namespace"
 }
 
-# Outputs
-output "gateway_controller_ip" {
-  value       = try(data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].ip, "LoadBalancer IP pending...")
-  description = "Gateway Controller (Traefik) public IP"
-}
-
-output "vault_gateway_url" {
-  value       = "http://${try(data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].ip, "PENDING")}"
-  description = "Vault UI URL via Gateway API"
-}
-
-output "gateway_setup_info" {
-  value = <<-EOT
-
-  Gateway API Setup Complete!
-
-  Gateway Controller: Traefik
-  Public IP: ${try(data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].ip, "PENDING")}
-
-  Access Vault UI at:
-  http://${try(data.kubernetes_service.traefik.status[0].load_balancer[0].ingress[0].ip, "PENDING")}
-
-  Check Gateway status:
-  kubectl get gateway -n vault
-  kubectl get httproute -n vault
-  EOT
-  description = "Gateway API setup information"
+output "vault_lb_ip" {
+  value       = try(kubernetes_service.vault_lb.status[0].load_balancer[0].ingress[0].ip, "Provisioning in OVH...")
+  description = "The public IP of the Vault Load Balancer"
 }

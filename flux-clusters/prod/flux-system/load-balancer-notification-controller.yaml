@@ -1,14 +1,22 @@
-apiVersion: v1
-kind: Service
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
-  name: receiver
+  name: webhook-receiver
   namespace: flux-system
 spec:
-  type: LoadBalancer
-  selector:
-    app: notification-controller
-  ports:
-    - name: http
-      port: 8080
-      protocol: TCP
-      targetPort: 9292
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: internet-gateway
+      namespace: gateway-namespace
+  hostnames:
+    - "webhook-receiver.example.com"
+  rules:
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+      backendRefs:
+        - name: webhook-receiver
+          namespace: flux-system
+          port: 80
