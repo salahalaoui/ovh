@@ -1,19 +1,3 @@
-resource "kubernetes_namespace" "app" {
-  metadata {
-    name = "app"
-  }
-}
-
-
-
-
-data "kubernetes_service_account" "this" {
-  metadata {
-    name      = "webapp"
-    namespace = resource.kubernetes_namespace.app.id
-  }
-}
-
 resource "vault_kubernetes_auth_backend_role" "this" {
   backend                          = vault_auth_backend.this.path
   role_name                        = "app"
