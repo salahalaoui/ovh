@@ -18,6 +18,10 @@ terraform {
       source  = "hashicorp/vault"
       version = "~> 5.4"
     }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.38"
+    }    
   }
 }
 
@@ -25,3 +29,5 @@ terraform {
 provider "vault" {
   address = "http://51.75.185.94:8200"
 }
+# Kubernetes provider using kubeconfig from main stack
+provider "kubernetes" {}
