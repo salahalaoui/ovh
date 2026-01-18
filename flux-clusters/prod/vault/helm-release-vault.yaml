@@ -36,6 +36,7 @@ spec:
         enabled: false
       ha:
         enabled: true
+        replicas: 1
         setNodeId: true
         config: <<-EOT
             ui = true
