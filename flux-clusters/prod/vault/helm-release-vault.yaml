@@ -30,13 +30,12 @@ spec:
     fullnameOverride: "vault"
     ui:
       enabled: true
-      serviceType: "ClusterIP"
+      serviceType: "LoadBalancer"
+      annotations:
+        service.beta.kubernetes.io/ovh-loadbalancer-balance: roundrobin
     server:
       ingress:
-        enabled: true
-        annotations:
-          |
-          service.beta.kubernetes.io/ovh-loadbalancer-balance: roundrobin
+        enabled: false
       dev:
         enabled: false
       # Fix permissions on OVH volumes
@@ -50,15 +49,17 @@ spec:
         raft:
           enabled: true
           setNodeId: true
-      # Use the standard config block for listener settings
-      config: |
-        ui = true
-        listener "tcp" {
-          tls_disable = 1
-          address = "[::]:8200"
-          cluster_address = "[::]:8201"
-        }
-        service_registration "kubernetes" {}
+          config: |
+            ui = true
+            listener "tcp" {
+              tls_disable = 1
+              address = "[::]:8200"
+              cluster_address = "[::]:8201"
+            }
+            storage "raft" {
+              path = "/vault/data"
+            }
+            service_registration "kubernetes" {}
       standalone:
         enabled: false
       dataStorage:
