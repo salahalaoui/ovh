@@ -20,36 +20,36 @@ spec:
   driftDetection:
     mode: enabled # undo kubectl edits and other unintended changes
   values:
-    image:
-      ui:
+    fullnameOverride: "vault"
+    ui:
+      enabled: true
+      serviceType: "ClusterIP"
+    server:
+      dev:
+        enabled: false
+      ha:
         enabled: true
-        serviceType: "ClusterIP"
-      server:
-        dev:
-          enabled: false
-        ha:
-          enabled: true
-          setNodeId: true
-          config: <<-EOT
-              ui = true
+        setNodeId: true
+        config: <<-EOT
+            ui = true
 
-              listener "tcp" {
-                tls_disable = 1
-                address = "[::]:8200"
-                cluster_address = "[::]:8201"
-              }
+            listener "tcp" {
+              tls_disable = 1
+              address = "[::]:8200"
+              cluster_address = "[::]:8201"
+            }
 
-              storage "raft" {
-                path = "/vault/data"
-              }
+            storage "raft" {
+              path = "/vault/data"
+            }
 
-              service_registration "kubernetes" {}
-            EOT
-        standalone:
-          enabled: true
-        dataStorage:
-          enabled: true
-          size: "4Gi"
-        auditStorage:
-          enabled: true 
-          size: "4Gi"
+            service_registration "kubernetes" {}
+          EOT
+      standalone:
+        enabled: false
+      dataStorage:
+        enabled: true
+        size: "4Gi"
+      auditStorage:
+        enabled: true 
+        size: "4Gi"
