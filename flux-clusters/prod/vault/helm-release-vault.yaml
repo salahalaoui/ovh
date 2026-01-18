@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vault
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: vault
+      version: '0.32.0'
+      reconcileStrategy: Revision
+      sourceRef:
+        kind: HelmRepository
+        name: vault
+  install:
+    createNamespace: true
+  interval: 10s
+  storageNamespace: vault
+  targetNamespace: vault
+  driftDetection:
+    mode: enabled # undo kubectl edits and other unintended changes
+  values:
+    image:
+      ui:
+        enabled: true
+        serviceType = "ClusterIP"
+      server:
+        dev:
+          enabled: false
+        ha:
+          enabled: true
+          setNodeId = true
+          config: <<-EOT
+              ui = true
+
+              listener "tcp" {
+                tls_disable = 1
+                address = "[::]:8200"
+                cluster_address = "[::]:8201"
+              }
+
+              storage "raft" {
+                path = "/vault/data"
+              }
+
+              service_registration "kubernetes" {}
+            EOT
+        standalone:
+          enabled: true
+        dataStorage:
+          enabled: true
+          size: "4Gi"
+        auditStorage:
+          enabled: true 
+          size: "4Gi"
