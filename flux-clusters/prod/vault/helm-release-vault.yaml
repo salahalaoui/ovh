@@ -34,27 +34,26 @@ spec:
     server:
       dev:
         enabled: false
+      # Fix permissions on OVH volumes
+      securityContext:
+        runAsUser: 100
+        runAsGroup: 1000
+        fsGroup: 1000
       ha:
         enabled: true
         replicas: 1
         raft:
           enabled: true
           setNodeId: true
-          config: <<-EOT
-              ui = true
-
-              listener "tcp" {
-                tls_disable = 1
-                address = "[::]:8200"
-                cluster_address = "[::]:8201"
-              }
-
-              storage "raft" {
-                path = "/vault/data"
-              }
-
-              service_registration "kubernetes" {}
-            EOT
+      # Use the standard config block for listener settings
+      config: |
+        ui = true
+        listener "tcp" {
+          tls_disable = 1
+          address = "[::]:8200"
+          cluster_address = "[::]:8201"
+        }
+        service_registration "kubernetes" {}
       standalone:
         enabled: false
       dataStorage:
