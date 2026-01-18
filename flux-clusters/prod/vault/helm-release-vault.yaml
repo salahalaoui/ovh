@@ -38,7 +38,7 @@ spec:
         pathType: Prefix
         activeService: true
         hosts:
-          - host: null
+          - host: ""
             paths:
               - /
       dev:
