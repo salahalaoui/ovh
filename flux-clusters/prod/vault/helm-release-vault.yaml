@@ -4,6 +4,7 @@ metadata:
   name: vault
   namespace: flux-system
 spec:
+  releaseName: vault
   chart:
     spec:
       chart: vault
@@ -14,6 +15,12 @@ spec:
         name: vault
   install:
     createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    force: true
+    remediation:
+      retries: 3
   interval: 10s
   storageNamespace: vault
   targetNamespace: vault
