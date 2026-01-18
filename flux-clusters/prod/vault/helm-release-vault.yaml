@@ -40,21 +40,21 @@ spec:
         raft:
           enabled: true
           setNodeId: true
-        config: <<-EOT
-            ui = true
+          config: <<-EOT
+              ui = true
 
-            listener "tcp" {
-              tls_disable = 1
-              address = "[::]:8200"
-              cluster_address = "[::]:8201"
-            }
+              listener "tcp" {
+                tls_disable = 1
+                address = "[::]:8200"
+                cluster_address = "[::]:8201"
+              }
 
-            storage "raft" {
-              path = "/vault/data"
-            }
+              storage "raft" {
+                path = "/vault/data"
+              }
 
-            service_registration "kubernetes" {}
-          EOT
+              service_registration "kubernetes" {}
+            EOT
       standalone:
         enabled: false
       dataStorage:
