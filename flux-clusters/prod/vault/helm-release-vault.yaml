@@ -34,8 +34,9 @@ spec:
     server:
       ingress:
         enabled: true
-        annotations:
-          kubernetes.io/ingress.class: traefik
+        ingressClassName: "traefik"
+        pathType: Prefix
+        activeService: true
         hosts:
           - host: null
             paths:
