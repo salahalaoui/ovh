@@ -23,7 +23,7 @@ spec:
     image:
       ui:
         enabled: true
-        serviceType = "ClusterIP"
+        serviceType: "ClusterIP"
       server:
         dev:
           enabled: false
