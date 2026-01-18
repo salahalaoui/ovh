@@ -30,12 +30,16 @@ spec:
     fullnameOverride: "vault"
     ui:
       enabled: true
-      serviceType: "LoadBalancer"
-      annotations:
-        service.beta.kubernetes.io/ovh-loadbalancer-balance: roundrobin
+      serviceType: "ClusterIP"
     server:
       ingress:
-        enabled: false
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
+        hosts:
+          - host: null
+            paths:
+              - /
       dev:
         enabled: false
       # Fix permissions on OVH volumes
