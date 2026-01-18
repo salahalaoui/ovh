@@ -32,6 +32,11 @@ spec:
       enabled: true
       serviceType: "ClusterIP"
     server:
+      ingress:
+        enabled: true
+        annotations:
+          |
+          service.beta.kubernetes.io/ovh-loadbalancer-balance: roundrobin
       dev:
         enabled: false
       # Fix permissions on OVH volumes
